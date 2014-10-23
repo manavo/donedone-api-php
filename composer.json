@@ -1,21 +1,21 @@
 {
     "name": "manavo/donedone-api-php",
     "description": "PHP library for connecting with DoneDone",
-	"keywords": ["donedone"],
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Philip Manavopoulos",
-			"email": "manavo@gmail.com",
-			"role" : "Developer"
-		}
-	],
+    "keywords": ["donedone"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Philip Manavopoulos",
+            "email": "manavo@gmail.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "guzzlehttp/guzzle": "~5.0"
     },
-	"autoload": {
-		"psr-4": {
-			"Manavo\\DoneDone\\": "src"
-		}
-	}
+    "autoload": {
+        "psr-4": {
+            "Manavo\\DoneDone\\": "src"
+        }
+    }
 }

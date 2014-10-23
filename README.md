@@ -44,6 +44,7 @@ $issue->setTitle('Brand new issue!');
 $issue->setPriorityLevel(1);
 $issue->setFixer(4321);
 $issue->setTester(1234);
+$issue->addAttachment('/path/to/some/file.md');
 
 $addedIssue = $project->addIssue($issue);
 ```

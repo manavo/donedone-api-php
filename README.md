@@ -6,7 +6,9 @@ PHP library for connecting with [DoneDone](http://www.getdonedone.com/).
 
 Install via composer:
 
-```composer require manavo/donedone-api-php```
+```
+composer require manavo/donedone-api-php
+```
 
 ## Usage
 
@@ -29,4 +31,19 @@ $priorityLevels = $client->priorityLevels();
 ```php
 $client = new Manavo\DoneDone\Client('team_name', 'username', 'password-or-api_token');
 $people = $client->project(1234)->people();
+```
+
+### Create a new issue
+```php
+$client = new Manavo\DoneDone\Client('team_name', 'username', 'password-or-api_token');
+
+$project = $client->project(1111);
+
+$issue = new \Manavo\DoneDone\Issue();
+$issue->setTitle('Brand new issue!');
+$issue->setPriorityLevel(1);
+$issue->setFixer(4321);
+$issue->setTester(1234);
+
+$addedIssue = $project->addIssue($issue);
 ```

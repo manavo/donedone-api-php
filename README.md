@@ -15,27 +15,27 @@ composer require manavo/donedone-api-php
 ### Get all projects
 
 ```php
-$client = new Manavo\DoneDone\Client('team_name', 'username', 'password-or-api_token');
+$client = new Manavo\DoneDone\Client('team_name', 'username', 'password/api_token');
 $projects = $client->projects();
 ```
 
 ### Get all priority levels
 
 ```php
-$client = new Manavo\DoneDone\Client('team_name', 'username', 'password-or-api_token');
+$client = new Manavo\DoneDone\Client('team_name', 'username', 'password/api_token');
 $priorityLevels = $client->priorityLevels();
 ```
 
 ### Get all people of a project
 
 ```php
-$client = new Manavo\DoneDone\Client('team_name', 'username', 'password-or-api_token');
+$client = new Manavo\DoneDone\Client('team_name', 'username', 'password/api_token');
 $people = $client->project(1234)->people();
 ```
 
 ### Create a new issue
 ```php
-$client = new Manavo\DoneDone\Client('team_name', 'username', 'password-or-api_token');
+$client = new Manavo\DoneDone\Client('team_name', 'username', 'password/api_token');
 
 $project = $client->project(1111);
 

@@ -64,6 +64,16 @@ class Client
     }
 
     /**
+     * Get a list of all companies
+     *
+     * @return array
+     */
+    public function companies()
+    {
+        return $this->get('companies');
+    }
+
+    /**
      * @param int $id
      *
      * @return Project

@@ -9,6 +9,7 @@ class Issue
     private $fixer = null;
     private $tester = null;
     private $description = null;
+    private $attachments = [];
 
     /**
      * @param string $description
@@ -50,20 +51,29 @@ class Issue
         $this->title = $title;
     }
 
+    public function addAttachment($file)
+    {
+        $this->attachments[] = $file;
+    }
+
     /**
      * @return array
      */
     public function toArray()
     {
         $data = [
-            'title' => $this->title,
+            'title'             => $this->title,
             'priority_level_id' => $this->priorityLevel,
-            'fixer_id' => $this->fixer,
-            'tester_id' => $this->tester,
+            'fixer_id'          => $this->fixer,
+            'tester_id'         => $this->tester,
         ];
 
         if ($this->description) {
             $data['description'] = $this->description;
+        }
+
+        foreach ($this->attachments as $index => $attachment) {
+            $data['attachment-' . $index] = fopen($attachment, 'r');
         }
 
         return $data;

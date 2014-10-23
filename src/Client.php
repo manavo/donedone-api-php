@@ -127,7 +127,7 @@ class Client
         $url = $this->getUrl($endpoint);
 
         $response = $this->guzzleClient->post($url, [
-            'json' => $data
+            'body' => $data
         ]);
 
         return $response->json();

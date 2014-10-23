@@ -2,6 +2,8 @@
 
 PHP library for connecting with [DoneDone](http://www.getdonedone.com/).
 
+You can find DoneDone's API documentation here: http://www.getdonedone.com/api/
+
 ## Installation
 
 Install via composer:

@@ -33,6 +33,15 @@ $client = new Manavo\DoneDone\Client('team_name', 'username', 'password/api_toke
 $people = $client->project(1234)->people();
 ```
 
+### Get all issues of a project (all, active, or closed)
+
+```php
+$client = new Manavo\DoneDone\Client('team_name', 'username', 'password/api_token');
+$issues = $client->project(1234)->issues();
+$activeIssues = $client->project(1234)->activeIssues();
+$closedAndFixedIssues = $client->project(1234)->closedAndFixedIssues();
+```
+
 ### Create a new issue
 ```php
 $client = new Manavo\DoneDone\Client('team_name', 'username', 'password/api_token');

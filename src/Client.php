@@ -211,7 +211,7 @@ class Client
     /**
      * Generate the full URL from the specified endpoint
      *
-     * @param $endpoint
+     * @param string $endpoint
      *
      * @return string
      */

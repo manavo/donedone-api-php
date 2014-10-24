@@ -271,6 +271,7 @@ class Issue
     }
 
     /**
+     * @param string $endpoint
      * @param array  $data
      * @param string $comment
      * @param array  $attachments

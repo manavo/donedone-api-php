@@ -228,6 +228,27 @@ class Issue
 
         return $this->update('tester', $data, $comment, $attachments);
     }
+    
+    /**
+     * Update the fixer of this issue
+     *
+     * @param int         $newFixer
+     * @param string|null $comment
+     * @param array       $attachments
+     *
+     * @return array
+     */
+    public function updateFixer(
+        $newFixer,
+        $comment = null,
+        $attachments = []
+    ) {
+        $data = [
+            'new_fixer_id' => $newFixer,
+        ];
+
+        return $this->update('fixer', $data, $comment, $attachments);
+    }
 
     /**
      * @param array  $data

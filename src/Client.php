@@ -81,7 +81,7 @@ class Client
      */
     public function issues()
     {
-        return $this->get('/issues/all');
+        return $this->get('issues/all');
     }
 
     /**
@@ -91,7 +91,7 @@ class Client
      */
     public function activeIssues()
     {
-        return $this->get('/issues/all_active');
+        return $this->get('issues/all_active');
     }
 
     /**
@@ -101,9 +101,20 @@ class Client
      */
     public function closedAndFixedIssues()
     {
-        return $this->get('/issues/all_closed_and_fixed');
+        return $this->get('issues/all_closed_and_fixed');
     }
 
+    /**
+     * Get all the issues by a filter
+     *
+     * @param int $filter
+     *
+     * @return array
+     */
+    public function issuesByFilter($filter)
+    {
+        return $this->get('issues/by_global_custom_filter/' . $filter);
+    }
 
     /**
      * Get a list of all global filters

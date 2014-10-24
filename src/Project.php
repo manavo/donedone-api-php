@@ -75,6 +75,24 @@ class Project
     }
 
     /**
+     * Get all the issues by a filter associated with this project
+     *
+     * @param int $filter
+     *
+     * @return array
+     */
+    public function issuesByFilter($filter)
+    {
+        return $this->client->get(
+            sprintf(
+                'projects/%d/issues/by_custom_filter/%d',
+                $this->id,
+                $filter
+            )
+        );
+    }
+
+    /**
      * Get release builds of this project
      *
      * @return array

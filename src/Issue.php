@@ -188,6 +188,26 @@ class Issue
     }
 
     /**
+     * Update the status of this issue
+     *
+     * @param int         $newStatus
+     * @param string|null $comment
+     * @param array       $attachments
+     *
+     * @return array
+     */
+    public function updateStatus(
+        $newStatus,
+        $comment = null,
+        $attachments = []
+    ) {
+        $data = [
+            'new_status_id' => $newStatus,
+        ];
+
+        return $this->update('status', $data, $comment, $attachments);
+    }
+    /**
      * Update the priority level of this issue
      *
      * @param int         $newLevel

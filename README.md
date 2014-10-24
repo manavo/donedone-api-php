@@ -1,8 +1,10 @@
 # DoneDone API
 
-[![License](https://poser.pugx.org/manavo/donedone-api-php/license.svg)](https://packagist.org/packages/manavo/donedone-api-php)
+[![Build Status](https://travis-ci.org/manavo/donedone-api-php.svg?branch=master)](https://travis-ci.org/manavo/donedone-api-php)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/manavo/donedone-api-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/manavo/donedone-api-php/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/manavo/donedone-api-php/v/stable.svg)](https://packagist.org/packages/manavo/donedone-api-php)
 [![Total Downloads](https://poser.pugx.org/manavo/donedone-api-php/downloads.svg)](https://packagist.org/packages/manavo/donedone-api-php)
+[![License](https://poser.pugx.org/manavo/donedone-api-php/license.svg)](https://packagist.org/packages/manavo/donedone-api-php)
 
 PHP library for connecting with [DoneDone](http://www.getdonedone.com/).
 

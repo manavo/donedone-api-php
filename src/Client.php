@@ -74,6 +74,16 @@ class Client
     }
 
     /**
+     * Get a list of all global filters
+     *
+     * @return array
+     */
+    public function globalFilters()
+    {
+        return $this->get('global_custom_filters');
+    }
+
+    /**
      * Get a list of all issue creation types
      *
      * @return array

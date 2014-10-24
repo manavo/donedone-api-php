@@ -34,7 +34,7 @@ class Issue
      * @param int    $projectId
      * @param int    $id
      */
-    function __construct($client, $projectId, $id)
+    function __construct($client = null, $projectId = null, $id = null)
     {
         $this->client = $client;
         $this->projectId = $projectId;

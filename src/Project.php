@@ -98,4 +98,19 @@ class Project
         );
     }
 
+    /**
+     * Create a new release build for the project
+     *
+     * @param ReleaseBuild $releaseBuild
+     *
+     * @return array
+     */
+    public function createReleaseBuild($releaseBuild)
+    {
+        return $this->client->post(
+            sprintf('projects/%d/release_builds', $this->id),
+            $releaseBuild->toArray()
+        );
+    }
+
 }

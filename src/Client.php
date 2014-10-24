@@ -248,4 +248,21 @@ class Client
         return $response->json();
     }
 
+    /**
+     * @param string $endpoint
+     * @param array  $data
+     *
+     * @return array
+     */
+    public function put($endpoint, $data = [])
+    {
+        $url = $this->getUrl($endpoint);
+
+        $response = $this->guzzleClient->put($url, [
+            'body' => $data
+        ]);
+
+        return $response->json();
+    }
+
 }

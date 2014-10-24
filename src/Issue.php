@@ -160,7 +160,8 @@ class Issue
      *
      * @return array
      */
-    public function availableReassignees(){
+    public function availableReassignees()
+    {
         return $this->client->get(
             sprintf(
                 'projects/%d/issues/%d/people/available_for_reassignment',
@@ -175,13 +176,50 @@ class Issue
      *
      * @return array
      */
-    public function availableStatuses(){
+    public function availableStatuses()
+    {
         return $this->client->get(
             sprintf(
                 'projects/%d/issues/%d/statuses/available_to_change_to',
                 $this->projectId,
                 $this->id
             )
+        );
+    }
+
+    /**
+     * Update the priority level of this issue
+     *
+     * @param             $newLevel
+     * @param string|null $comment
+     * @param array       $attachments
+     *
+     * @return array
+     */
+    public function updatePriorityLevel(
+        $newLevel,
+        $comment = null,
+        $attachments = []
+    ) {
+        $data = [
+            'new_priority_level_id' => $newLevel,
+        ];
+
+        if ($comment) {
+            $data['comment'] = $comment;
+        }
+
+        foreach ($attachments as $index => $attachment) {
+            $data['attachment-' . $index] = fopen($attachment, 'r');
+        }
+
+        return $this->client->put(
+            sprintf(
+                'projects/%d/issues/%d/priority_level',
+                $this->projectId,
+                $this->id
+            ),
+            $data
         );
     }
 

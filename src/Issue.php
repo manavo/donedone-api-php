@@ -190,7 +190,7 @@ class Issue
     /**
      * Update the priority level of this issue
      *
-     * @param             $newLevel
+     * @param int         $newLevel
      * @param string|null $comment
      * @param array       $attachments
      *
@@ -205,6 +205,39 @@ class Issue
             'new_priority_level_id' => $newLevel,
         ];
 
+        return $this->update('priority_level', $data, $comment, $attachments);
+    }
+
+    /**
+     * Update the tester of this issue
+     *
+     * @param int         $newTester
+     * @param string|null $comment
+     * @param array       $attachments
+     *
+     * @return array
+     */
+    public function updateTester(
+        $newTester,
+        $comment = null,
+        $attachments = []
+    ) {
+        $data = [
+            'new_tester_id' => $newTester,
+        ];
+
+        return $this->update('tester', $data, $comment, $attachments);
+    }
+
+    /**
+     * @param array  $data
+     * @param string $comment
+     * @param array  $attachments
+     *
+     * @return array
+     */
+    private function update($endpoint, $data, $comment, $attachments)
+    {
         if ($comment) {
             $data['comment'] = $comment;
         }
@@ -215,9 +248,10 @@ class Issue
 
         return $this->client->put(
             sprintf(
-                'projects/%d/issues/%d/priority_level',
+                'projects/%d/issues/%d/%s',
                 $this->projectId,
-                $this->id
+                $this->id,
+                $endpoint
             ),
             $data
         );

@@ -1,7 +1,8 @@
 # DoneDone API
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Latest Version](https://img.shields.io/github/release/manavo/donedone-api-php.svg?style=flat-square)](https://github.com/manavo/donedone-api-php/releases)
+[![License](https://poser.pugx.org/manavo/donedone-api-php/license.svg)](https://packagist.org/packages/manavo/donedone-api-php)
+[![Latest Stable Version](https://poser.pugx.org/manavo/donedone-api-php/v/stable.svg)](https://packagist.org/packages/manavo/donedone-api-php)
+[![Total Downloads](https://poser.pugx.org/manavo/donedone-api-php/downloads.svg)](https://packagist.org/packages/manavo/donedone-api-php)
 
 PHP library for connecting with [DoneDone](http://www.getdonedone.com/).
 

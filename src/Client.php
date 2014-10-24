@@ -73,6 +73,38 @@ class Client
         return $this->get('companies');
     }
 
+
+    /**
+     * Get all the issues
+     *
+     * @return array
+     */
+    public function issues()
+    {
+        return $this->get('/issues/all');
+    }
+
+    /**
+     * Get all the active issues
+     *
+     * @return array
+     */
+    public function activeIssues()
+    {
+        return $this->get('/issues/all_active');
+    }
+
+    /**
+     * Get all the closed and fixed issues
+     *
+     * @return array
+     */
+    public function closedAndFixedIssues()
+    {
+        return $this->get('/issues/all_closed_and_fixed');
+    }
+
+
     /**
      * Get a list of all global filters
      *

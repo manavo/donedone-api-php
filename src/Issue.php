@@ -156,6 +156,21 @@ class Issue
     }
 
     /**
+     * Get a list of people who can be cc’d or assigned as the fixer or tester to the issue
+     *
+     * @return array
+     */
+    public function availableReassignees(){
+        return $this->client->get(
+            sprintf(
+                'projects/%d/issues/%d/people/available_for_reassignment',
+                $this->projectId,
+                $this->id
+            )
+        );
+    }
+
+    /**
      * @return array
      */
     public function toArray()

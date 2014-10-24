@@ -70,6 +70,16 @@ class Project
     }
 
     /**
+     * Get release builds of this project
+     *
+     * @return array
+     */
+    public function releaseBuilds()
+    {
+        return $this->client->get('projects/' . $this->id . '/release_builds');
+    }
+
+    /**
      * Add a new issue to the project
      *
      * @param Issue $issue

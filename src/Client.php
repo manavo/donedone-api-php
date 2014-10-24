@@ -117,6 +117,16 @@ class Client
     }
 
     /**
+     * Get all the issues which are waiting on you
+     *
+     * @return array
+     */
+    public function issuesWaitingOnYou()
+    {
+        return $this->get('issues/waiting_on_you');
+    }
+
+    /**
      * Get a list of all global filters
      *
      * @return array

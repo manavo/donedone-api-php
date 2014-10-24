@@ -93,6 +93,19 @@ class Project
     }
 
     /**
+     * Get all the issues which are waiting on you, and are associated with
+     * this project
+     *
+     * @return array
+     */
+    public function issuesWaitingOnYou()
+    {
+        return $this->client->get(
+            sprintf('projects/%d/issues/waiting_on_you', $this->id)
+        );
+    }
+
+    /**
      * Get release builds of this project
      *
      * @return array

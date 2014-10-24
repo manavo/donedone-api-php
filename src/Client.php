@@ -177,6 +177,16 @@ class Client
     }
 
     /**
+     * @param int $id
+     *
+     * @return Company
+     */
+    public function company($id)
+    {
+        return new Company($this, $id);
+    }
+
+    /**
      * Create a new company
      *
      * @param Company $company

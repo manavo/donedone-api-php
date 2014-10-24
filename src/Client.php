@@ -74,6 +74,16 @@ class Client
     }
 
     /**
+     * Get a list of all issue creation types
+     *
+     * @return array
+     */
+    public function issueCreationTypes()
+    {
+        return $this->get('issue_creation_types');
+    }
+
+    /**
      * @param int $id
      *
      * @return Project

@@ -171,6 +171,21 @@ class Issue
     }
 
     /**
+     * Get a list of issue statuses the authenticated user may update the issue
+     *
+     * @return array
+     */
+    public function availableStatuses(){
+        return $this->client->get(
+            sprintf(
+                'projects/%d/issues/%d/statuses/available_to_change_to',
+                $this->projectId,
+                $this->id
+            )
+        );
+    }
+
+    /**
      * @return array
      */
     public function toArray()

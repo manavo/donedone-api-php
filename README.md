@@ -59,3 +59,15 @@ $issue->addAttachment('/path/to/some/file.md');
 
 $addedIssue = $project->addIssue($issue);
 ```
+
+### Comment on an issue
+
+```php
+$client = new Manavo\DoneDone\Client('team_name', 'username', 'password/api_token');
+$issue = $client->project(29881)->issue(16);
+
+$comment = new \Manavo\DoneDone\Comment();
+$comment->setMessage('I am commenting!!!');
+
+$addedComment = $issue->addComment($comment);
+```

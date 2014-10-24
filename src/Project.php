@@ -85,6 +85,16 @@ class Project
     }
 
     /**
+     * Get filters of this project
+     *
+     * @return array
+     */
+    public function filters()
+    {
+        return $this->client->get('projects/' . $this->id . '/custom_filters');
+    }
+
+    /**
      * Add a new issue to the project
      *
      * @param Issue $issue

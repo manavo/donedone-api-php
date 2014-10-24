@@ -104,6 +104,18 @@ class Client
     }
 
     /**
+     * Create a new company
+     *
+     * @param Company $company
+     *
+     * @return array
+     */
+    public function createCompany($company)
+    {
+        return $this->post('companies', $company->toArray());
+    }
+
+    /**
      * Override the default Guzzle client
      *
      * @param \GuzzleHttp\Client $client

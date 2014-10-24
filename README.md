@@ -55,7 +55,7 @@ $issue->setTitle('Brand new issue!');
 $issue->setPriorityLevel(1);
 $issue->setFixer(4321);
 $issue->setTester(1234);
-$issue->addAttachment('/path/to/some/file.md');
+$issue->addAttachment('/path/to/some/file.md'); // Optional
 
 $addedIssue = $project->addIssue($issue);
 ```
@@ -68,6 +68,7 @@ $issue = $client->project(29881)->issue(16);
 
 $comment = new \Manavo\DoneDone\Comment();
 $comment->setMessage('I am commenting!!!');
+$comment->addAttachment('/path/to/some/file.md'); // Optional
 
 $addedComment = $issue->addComment($comment);
 ```

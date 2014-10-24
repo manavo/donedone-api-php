@@ -4,6 +4,21 @@ namespace Manavo\DoneDone;
 
 class Issue
 {
+    /**
+     * @var Client
+     */
+    private $client;
+
+    /**
+     * @var int
+     */
+    private $projectId;
+
+    /**
+     * @var int
+     */
+    private $id;
+
     private $title = null;
     private $priorityLevel = null;
     private $fixer = null;
@@ -13,6 +28,18 @@ class Issue
     private $attachments = [];
     private $userIdsToCc = null;
     private $tags = null;
+
+    /**
+     * @param Client $client
+     * @param int    $projectId
+     * @param int    $id
+     */
+    function __construct($client, $projectId, $id)
+    {
+        $this->client = $client;
+        $this->projectId = $projectId;
+        $this->id = $id;
+    }
 
     /**
      * @param string $description
@@ -107,6 +134,25 @@ class Issue
         }
 
         $this->tags = $tags;
+    }
+
+    /**
+     * Add a new comment to the issue
+     *
+     * @param Comment $comment
+     *
+     * @return array
+     */
+    public function addComment($comment)
+    {
+        return $this->client->post(
+            sprintf(
+                'projects/%d/issues/%d/comments',
+                $this->projectId,
+                $this->id
+            ),
+            $comment->toArray()
+        );
     }
 
     /**

@@ -45,6 +45,11 @@ class Project
         return $this->client->get('projects/' . $this->id . '/issues/all');
     }
 
+    public function issue($id)
+    {
+        return new Issue($this->client, $this->id, $id);
+    }
+
     /**
      * Get all the active issues associated with this project
      *

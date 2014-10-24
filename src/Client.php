@@ -84,6 +84,16 @@ class Client
     }
 
     /**
+     * Get a list of all issue sort types
+     *
+     * @return array
+     */
+    public function issueSortTypes()
+    {
+        return $this->get('issue_sort_types');
+    }
+
+    /**
      * @param int $id
      *
      * @return Project

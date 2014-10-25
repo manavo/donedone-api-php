@@ -13,4 +13,12 @@ class CompanyTest extends PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('company_name', (new Company())->toArray());
     }
 
+    public function testTitleGetsSet()
+    {
+        $company = new Company();
+        $company->setName('my name');
+
+        $this->assertEquals('my name', $company->toArray()['company_name']);
+    }
+
 }

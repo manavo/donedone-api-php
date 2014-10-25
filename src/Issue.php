@@ -248,7 +248,7 @@ class Issue
 
         return $this->update('tester', $data, $comment, $attachments);
     }
-    
+
     /**
      * Update the fixer of this issue
      *
@@ -334,4 +334,4 @@ class Issue
         return $data;
     }
 
-} 
+}

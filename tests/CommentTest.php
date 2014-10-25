@@ -15,6 +15,7 @@ class CommentTest extends \PHPUnit_Framework_TestCase
     public function testAttachmentsGetAddedWhenConvertingToArray()
     {
         $comment = new Comment();
+        $comment->setMessage('comment');
         $comment->addAttachment(__FILE__);
         $comment->addAttachment(__FILE__);
         $comment->addAttachment(__FILE__);

@@ -73,7 +73,6 @@ class Client
         return $this->get('companies');
     }
 
-
     /**
      * Get all the issues
      *

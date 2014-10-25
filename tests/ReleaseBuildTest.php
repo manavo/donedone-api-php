@@ -7,7 +7,8 @@ use Manavo\DoneDone\ReleaseBuild;
 class ReleaseBuildTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testRequiredParametersIncludedWhenConvertingToArray() {
+    public function testRequiredParametersIncludedWhenConvertingToArray()
+    {
         $releaseBuildArray = (new ReleaseBuild())->toArray();
 
         $this->assertArrayHasKey('order_numbers', $releaseBuildArray);

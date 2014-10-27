@@ -45,6 +45,11 @@ class Project
         return $this->client->get('projects/' . $this->id . '/issues/all');
     }
 
+    /**
+     * @param int $id
+     *
+     * @return Issue
+     */
     public function issue($id)
     {
         return new Issue($this->client, $this->id, $id);

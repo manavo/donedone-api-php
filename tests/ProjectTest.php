@@ -16,8 +16,7 @@ class ProjectTest extends PHPUnit_Framework_TestCase
         $project = new Project(null, 0);
         $this->assertInstanceOf('Manavo\\DoneDone\\Issue', $project->issue(1));
     }
-
-
+    
     public function typeOfRequestProvider()
     {
         return [

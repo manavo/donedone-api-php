@@ -2,6 +2,8 @@
 
 namespace Manavo\DoneDone\Test;
 
+use Manavo\DoneDone\Client;
+use Manavo\DoneDone\Comment;
 use Manavo\DoneDone\Issue;
 use PHPUnit_Framework_TestCase;
 
@@ -92,6 +94,98 @@ class IssueTest extends PHPUnit_Framework_TestCase
         $issue->setDueDate($time);
 
         $this->assertEquals(date('Y-m-d H:i:s', $time), $issue->toArray()['due_date']);
+    }
+
+    public function testFixerIsSetCorrectly()
+    {
+        $issue = new Issue();
+        $issue->setFixer(123);
+
+        $this->assertEquals(123, $issue->toArray()['fixer_id']);
+    }
+
+    public function testPriorityLevelIsSetCorrectly()
+    {
+        $issue = new Issue();
+        $issue->setPriorityLevel(1123);
+
+        $this->assertEquals(1123, $issue->toArray()['priority_level_id']);
+    }
+
+    public function testTesterIsSetCorrectly()
+    {
+        $issue = new Issue();
+        $issue->setTester(31);
+
+        $this->assertEquals(31, $issue->toArray()['tester_id']);
+    }
+
+    public function testTitleIsSetCorrectly()
+    {
+        $issue = new Issue();
+        $issue->setTitle('setting title!');
+
+        $this->assertEquals('setting title!', $issue->toArray()['title']);
+    }
+
+    public function typeOfRequestProvider()
+    {
+        return [
+            ['availableReassignees', 'get'],
+            ['availableStatuses', 'get'],
+        ];
+    }
+
+    /**
+     * @dataProvider typeOfRequestProvider
+     */
+    public function testMethodsMakeCorrectTypeOfRequest($function, $requestType)
+    {
+        $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
+            ->disableOriginalConstructor()->getMock();
+        $responseMock->expects($this->once())->method('json')
+            ->willReturn($this->returnValue(true));
+
+        $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
+            ->disableOriginalConstructor()->getMock();
+        $guzzleClientMock->expects($this->once())->method($requestType)
+            ->willReturn($responseMock);
+
+        $client = new Client('team', 'username', 'password');
+        $client->setClient($guzzleClientMock);
+
+        $client->project(123)->issue(111)->$function();
+    }
+
+    public function typeOfRequestWithArgumentProvider()
+    {
+        return [
+            ['addComment', 'post', new Comment()],
+        ];
+    }
+
+    /**
+     * @dataProvider typeOfRequestWithArgumentProvider
+     */
+    public function testMethodsWithArgumentMakeCorrectTypeOfRequest(
+        $function,
+        $requestType,
+        $argument
+    ) {
+        $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
+            ->disableOriginalConstructor()->getMock();
+        $responseMock->expects($this->once())->method('json')
+            ->willReturn($this->returnValue(true));
+
+        $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
+            ->disableOriginalConstructor()->getMock();
+        $guzzleClientMock->expects($this->once())->method($requestType)
+            ->willReturn($responseMock);
+
+        $client = new Client('team', 'username', 'password');
+        $client->setClient($guzzleClientMock);
+
+        $client->project(123)->issue(182)->$function($argument);
     }
 
 }

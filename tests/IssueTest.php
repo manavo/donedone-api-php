@@ -161,6 +161,10 @@ class IssueTest extends PHPUnit_Framework_TestCase
     {
         return [
             ['addComment', 'post', new Comment()],
+            ['updateStatus', 'put', 1],
+            ['updatePriorityLevel', 'put', 1],
+            ['updateTester', 'put', 1],
+            ['updateFixer', 'put', 1],
         ];
     }
 
@@ -186,6 +190,26 @@ class IssueTest extends PHPUnit_Framework_TestCase
         $client->setClient($guzzleClientMock);
 
         $client->project(123)->issue(182)->$function($argument);
+    }
+
+    public function testUpdateMethodSendsCommentIfSet()
+    {
+        $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
+            ->disableOriginalConstructor()->getMock();
+        $responseMock->expects($this->once())->method('json')
+            ->willReturn($this->returnValue(true));
+
+        $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
+            ->disableOriginalConstructor()->getMock();
+        $guzzleClientMock->expects($this->once())->method('put')
+            ->with($this->equalTo('https://team.mydonedone.com/issuetracker/api/v2/projects/111/issues/321/fixer.json'), $this->equalTo(['body' => ['new_fixer_id' => 1, 'comment' => 'Comment!']]))->willReturn($responseMock);
+
+        $client = new Client('team', 'username', 'password');
+        $client->setClient($guzzleClientMock);
+
+        $client->project(111)->issue(321)->updateFixer(
+            1, 'Comment!'
+        );
     }
 
 }

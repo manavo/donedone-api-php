@@ -13,10 +13,10 @@ class ProjectTest extends PHPUnit_Framework_TestCase
 
     public function testIssueMethodReturnsIssueObject()
     {
-        $project = new Project(null, 0);
+        $project = new Project(new Client('team', 'username', 'password'), 0);
         $this->assertInstanceOf('Manavo\\DoneDone\\Issue', $project->issue(1));
     }
-    
+
     public function typeOfRequestProvider()
     {
         return [

@@ -135,7 +135,7 @@ class Project
     /**
      * Get release builds of this project
      *
-     * @return array
+     * @return ReleaseBuildInfo
      */
     public function releaseBuildInfo()
     {

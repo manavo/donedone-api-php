@@ -27,6 +27,7 @@ class ProjectTest extends PHPUnit_Framework_TestCase
             ['issuesWaitingOnYou', 'get'],
             ['issuesWaitingOnThem', 'get'],
             ['releaseBuilds', 'get'],
+            ['releaseBuildInfo', 'get'],
             ['filters', 'get'],
         ];
     }

@@ -133,6 +133,16 @@ class Project
     }
 
     /**
+     * Get release builds of this project
+     *
+     * @return array
+     */
+    public function releaseBuildInfo()
+    {
+        return $this->client->get('projects/' . $this->id . '/release_builds/info');
+    }
+
+    /**
      * Get filters of this project
      *
      * @return array

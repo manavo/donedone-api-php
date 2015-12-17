@@ -29,15 +29,4 @@ class ReleaseBuildInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('my title', $releaseBuild->getTitle());
         $this->assertEquals([1, 2, 3], $releaseBuild->getOrderNumbersReadyForNextRelease());
     }
-
-    public function testOrderNumbersIsACommaSeparatedString()
-    {
-        $releaseBuild = new ReleaseBuildInfo([
-            'id' => 12,
-            'title' => 'my title',
-            'order_numbers_ready_for_next_release' => [1, 2, 3]
-        ]);
-
-        $this->assertEquals([1, 2, 3], $releaseBuild->toArray()['order_numbers_ready_for_next_release']);
-    }
 }

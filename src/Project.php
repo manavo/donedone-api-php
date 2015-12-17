@@ -139,7 +139,7 @@ class Project
      */
     public function releaseBuildInfo()
     {
-        return $this->client->get('projects/' . $this->id . '/release_builds/info');
+        return new ReleaseBuildInfo($this->client->get('projects/' . $this->id . '/release_builds/info'));
     }
 
     /**

@@ -15,11 +15,22 @@ namespace Manavo\DoneDone;
 class ReleaseBuildInfo
 {
     /** @var int */
-    private $id;
+    private $id = null;
     /** @var string */
-    private $title;
+    private $title = null;
     /** @var array of int */
-    private $order_numbers_ready_for_next_release;
+    private $order_numbers_ready_for_next_release = [];
+
+    /**
+     * ReleaseBuildInfo constructor.
+     * @param array|null $data
+     */
+    function __construct($data = null)
+    {
+        $this->id = $data['id'];
+        $this->title = $data['title'];
+        $this->order_numbers_ready_for_next_release = $data['order_numbers_ready_for_next_release'];
+    }
 
     /**
      * @return int
@@ -43,5 +54,19 @@ class ReleaseBuildInfo
     public function getOrderNumbersReadyForNextRelease()
     {
         return $this->order_numbers_ready_for_next_release;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        $data = [
+            'id'                                   => $this->id,
+            'title'                                => $this->title,
+            'order_numbers_ready_for_next_release' => $this->order_numbers_ready_for_next_release,
+        ];
+
+        return $data;
     }
 }

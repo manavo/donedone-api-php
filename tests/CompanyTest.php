@@ -22,18 +22,4 @@ class CompanyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('my name', $company->toArray()['company_name']);
     }
 
-    public function testUpdateNameMakesPutRequest()
-    {
-        $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
-            ->disableOriginalConstructor()->getMock();
-        $guzzleClientMock->expects($this->once())->method('put');
-
-        $client = new Client('team', 'username', 'password');
-        $client->setClient($guzzleClientMock);
-
-        $company = $client->company(3);
-
-        $company->updateName('name');
-    }
-
 }

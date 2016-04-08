@@ -62,8 +62,8 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
             ->disableOriginalConstructor()->getMock();
-        $responseMock->expects($this->once())->method('json')
-            ->willReturn($this->returnValue(true));
+        $responseMock->expects($this->once())->method('getBody')
+            ->willReturn($this->returnValue('{}'));
 
         $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
             ->disableOriginalConstructor()->getMock();
@@ -93,8 +93,8 @@ class ClientTest extends PHPUnit_Framework_TestCase
     ) {
         $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
             ->disableOriginalConstructor()->getMock();
-        $responseMock->expects($this->once())->method('json')
-            ->willReturn($this->returnValue(true));
+        $responseMock->expects($this->once())->method('getBody')
+            ->willReturn($this->returnValue('{}'));
 
         $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
             ->disableOriginalConstructor()->getMock();

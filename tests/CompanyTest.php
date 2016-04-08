@@ -24,15 +24,9 @@ class CompanyTest extends PHPUnit_Framework_TestCase
 
     public function testUpdateNameMakesPutRequest()
     {
-        $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
-            ->disableOriginalConstructor()->getMock();
-        $responseMock->expects($this->once())->method('json')
-            ->willReturn($this->returnValue(true));
-
         $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
             ->disableOriginalConstructor()->getMock();
-        $guzzleClientMock->expects($this->once())->method('put')
-            ->willReturn($responseMock);
+        $guzzleClientMock->expects($this->once())->method('put');
 
         $client = new Client('team', 'username', 'password');
         $client->setClient($guzzleClientMock);

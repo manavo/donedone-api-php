@@ -37,15 +37,9 @@ class ProjectTest extends PHPUnit_Framework_TestCase
      */
     public function testMethodsMakeCorrectTypeOfRequest($function, $requestType)
     {
-        $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
-            ->disableOriginalConstructor()->getMock();
-        $responseMock->expects($this->once())->method('json')
-            ->willReturn($this->returnValue(true));
-
         $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
             ->disableOriginalConstructor()->getMock();
-        $guzzleClientMock->expects($this->once())->method($requestType)
-            ->willReturn($responseMock);
+        $guzzleClientMock->expects($this->once())->method($requestType);
 
         $client = new Client('team', 'username', 'password');
         $client->setClient($guzzleClientMock);
@@ -70,15 +64,9 @@ class ProjectTest extends PHPUnit_Framework_TestCase
         $requestType,
         $argument
     ) {
-        $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
-            ->disableOriginalConstructor()->getMock();
-        $responseMock->expects($this->once())->method('json')
-            ->willReturn($this->returnValue(true));
-
         $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
             ->disableOriginalConstructor()->getMock();
-        $guzzleClientMock->expects($this->once())->method($requestType)
-            ->willReturn($responseMock);
+        $guzzleClientMock->expects($this->once())->method($requestType);
 
         $client = new Client('team', 'username', 'password');
         $client->setClient($guzzleClientMock);

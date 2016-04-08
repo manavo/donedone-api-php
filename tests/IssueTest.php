@@ -128,27 +128,4 @@ class IssueTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('setting title!', $issue->toArray()['title']);
     }
 
-    public function typeOfRequestProvider()
-    {
-        return [
-            ['availableReassignees', 'get'],
-            ['availableStatuses', 'get'],
-        ];
-    }
-
-    /**
-     * @dataProvider typeOfRequestProvider
-     */
-    public function testMethodsMakeCorrectTypeOfRequest($function, $requestType)
-    {
-        $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
-            ->disableOriginalConstructor()->getMock();
-        $guzzleClientMock->expects($this->once())->method($requestType);
-
-        $client = new Client('team', 'username', 'password');
-        $client->setClient($guzzleClientMock);
-
-        $client->project(123)->issue(111)->$function();
-    }
-
 }

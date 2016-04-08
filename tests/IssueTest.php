@@ -141,15 +141,9 @@ class IssueTest extends PHPUnit_Framework_TestCase
      */
     public function testMethodsMakeCorrectTypeOfRequest($function, $requestType)
     {
-        $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
-            ->disableOriginalConstructor()->getMock();
-        $responseMock->expects($this->once())->method('json')
-            ->willReturn($this->returnValue(true));
-
         $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
             ->disableOriginalConstructor()->getMock();
-        $guzzleClientMock->expects($this->once())->method($requestType)
-            ->willReturn($responseMock);
+        $guzzleClientMock->expects($this->once())->method($requestType);
 
         $client = new Client('team', 'username', 'password');
         $client->setClient($guzzleClientMock);
@@ -176,15 +170,9 @@ class IssueTest extends PHPUnit_Framework_TestCase
         $requestType,
         $argument
     ) {
-        $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
-            ->disableOriginalConstructor()->getMock();
-        $responseMock->expects($this->once())->method('json')
-            ->willReturn($this->returnValue(true));
-
         $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
             ->disableOriginalConstructor()->getMock();
-        $guzzleClientMock->expects($this->once())->method($requestType)
-            ->willReturn($responseMock);
+        $guzzleClientMock->expects($this->once())->method($requestType);
 
         $client = new Client('team', 'username', 'password');
         $client->setClient($guzzleClientMock);
@@ -194,15 +182,10 @@ class IssueTest extends PHPUnit_Framework_TestCase
 
     public function testUpdateMethodSendsCommentIfSet()
     {
-        $responseMock = $this->getMockBuilder('\GuzzleHttp\Message\Response')
-            ->disableOriginalConstructor()->getMock();
-        $responseMock->expects($this->once())->method('json')
-            ->willReturn($this->returnValue(true));
-
         $guzzleClientMock = $this->getMockBuilder('\GuzzleHttp\Client')
             ->disableOriginalConstructor()->getMock();
         $guzzleClientMock->expects($this->once())->method('put')
-            ->with($this->equalTo('https://team.mydonedone.com/issuetracker/api/v2/projects/111/issues/321/fixer.json'), $this->equalTo(['body' => ['new_fixer_id' => 1, 'comment' => 'Comment!']]))->willReturn($responseMock);
+            ->with($this->equalTo('https://team.mydonedone.com/issuetracker/api/v2/projects/111/issues/321/fixer.json'), $this->equalTo(['body' => ['new_fixer_id' => 1, 'comment' => 'Comment!']]));
 
         $client = new Client('team', 'username', 'password');
         $client->setClient($guzzleClientMock);

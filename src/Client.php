@@ -237,7 +237,7 @@ class Client
             'query' => $data
         ]);
 
-        return $response->json();
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -254,7 +254,7 @@ class Client
             'body' => $data
         ]);
 
-        return $response->json();
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -271,7 +271,7 @@ class Client
             'body' => $data
         ]);
 
-        return $response->json();
+        return json_decode($response->getBody()->getContents(), true);
     }
 
 }

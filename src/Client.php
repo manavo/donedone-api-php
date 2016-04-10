@@ -237,11 +237,7 @@ class Client
             'query' => $data
         ]);
 
-        if ($response) {
-            return json_decode($response->getBody(), true);
-        } else {
-            return null;
-        }
+        return $response->json();
     }
 
     /**
@@ -258,11 +254,7 @@ class Client
             'body' => $data
         ]);
 
-        if ($response) {
-            return json_decode($response->getBody(), true);
-        } else {
-            return null;
-        }
+        return $response->json();
     }
 
     /**
@@ -279,11 +271,7 @@ class Client
             'body' => $data
         ]);
 
-        if ($response) {
-            return json_decode($response->getBody(), true);
-        } else {
-            return null;
-        }
+        return $response->json();
     }
 
 }

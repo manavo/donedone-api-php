@@ -172,6 +172,18 @@ class Issue
     }
 
     /**
+     * Get the details of this issue
+     *
+     * @return array
+     */
+    public function get()
+    {
+        return $this->client->get(
+            sprintf('projects/%d/issues/%d', $this->projectId, $this->id)
+        );
+    }
+
+    /**
      * Get a list of issue statuses the authenticated user may update the issue
      *
      * @return array

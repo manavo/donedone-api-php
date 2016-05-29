@@ -26,6 +26,16 @@ class Project
     }
 
     /**
+     * Get the details of this project
+     *
+     * @return array
+     */
+    public function get()
+    {
+        return $this->client->get(sprintf('projects/%d', $this->id));
+    }
+
+    /**
      * Get all the people associated with this project
      *
      * @return array
